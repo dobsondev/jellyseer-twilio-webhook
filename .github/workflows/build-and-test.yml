@@ -53,7 +53,7 @@ jobs:
 
     - name: Run `docker compose up`
       run: |
-        docker compose up -f docker-compose.github.yml -d
+        docker compose -f docker-compose.github.yml up -d
 
     - name: Install Newman
       run: |
