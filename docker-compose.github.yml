@@ -9,6 +9,6 @@ services:
       TWILIO_AUTH_TOKEN: 1234567890
       TWILIO_PHONE_NUMBER: +15556667777
       ADMIN_PHONE_NUMBER: +15556667777
-      API_KEY: ABCDEFG
+      AUTH_HEADER: ABCDEFG
     volumes:
       - ./app:/app

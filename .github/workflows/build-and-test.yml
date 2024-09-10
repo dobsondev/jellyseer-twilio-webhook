@@ -8,12 +8,6 @@ jobs:
   build:
     name: Build Application with Docker
     runs-on: ubuntu-latest
-    env:
-      TWILIO_ACCOUNT_SID: 1234567890
-      TWILIO_AUTH_TOKEN: 1234567890
-      TWILIO_PHONE_NUMBER: +15556667777
-      ADMIN_PHONE_NUMBER: +15556667777
-      API_KEY: ABCDEFG
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -34,11 +28,7 @@ jobs:
     name: Run Postman Collection Tests
     runs-on: ubuntu-latest
     env:
-      TWILIO_ACCOUNT_SID: 1234567890
-      TWILIO_AUTH_TOKEN: 1234567890
-      TWILIO_PHONE_NUMBER: +15556667777
-      ADMIN_PHONE_NUMBER: +15556667777
-      API_KEY: ABCDEFG
+      AUTH_HEADER: ABCDEFG  # Must match what is in `docker-compose.github.yml`
     needs: build
     steps:
     - name: Checkout repository
