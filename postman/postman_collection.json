@@ -273,7 +273,7 @@
 		"apikey": [
 			{
 				"key": "value",
-				"value": "{{AUTH_HEADER}}",
+				"value": "ABCDEFG",
 				"type": "string"
 			},
 			{

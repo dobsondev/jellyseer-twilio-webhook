@@ -27,8 +27,6 @@ jobs:
   run-postman-collection:
     name: Run Postman Collection Tests
     runs-on: ubuntu-latest
-    env:
-      AUTH_HEADER: ABCDEFG  # Must match what is in `docker-compose.github.yml`
     needs: build
     steps:
     - name: Checkout repository
