@@ -1,0 +1,14 @@
+services:
+  flask:
+    build: .
+    ports:
+      - "5050:5000"
+    environment:
+      FLASK_ENV: development
+      TWILIO_ACCOUNT_SID: 1234567890
+      TWILIO_AUTH_TOKEN: 1234567890
+      TWILIO_PHONE_NUMBER: +15556667777
+      ADMIN_PHONE_NUMBER: +15556667777
+      AUTH_HEADER: ABCDEFG
+    volumes:
+      - ./app:/app

@@ -27,9 +27,9 @@ jellyseer-twilio-webhook:
 
 ## Local Development Quick Start
 
-Copy the contents of `.env.sample` to `.env` and fill out the appropriate values. This will be used by the `docker-compose.local.yml` file to generate all the required environment variables. Then simply run the following commands:
+Copy the contents of `.env.sample` to `.env` and fill out the appropriate values. This will be used by the `docker-compose.yml` file to generate all the required environment variables. Then simply run the following commands:
 
 ```bash
-docker compose -f docker-compose.local.yml build --no-cache
-docker compose -f docker-compose.local.yml up -d
+docker compose build --no-cache
+docker compose up -d
 ```

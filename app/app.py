@@ -10,7 +10,7 @@ twilio_client = Client(account_sid, auth_token)
 twilio_phone_number = os.getenv("TWILIO_PHONE_NUMBER")
 admin_phone_number = os.getenv("ADMIN_PHONE_NUMBER")
 
-api_key = os.getenv("API_KEY") 
+api_key = os.getenv("AUTH_HEADER") 
 
 app = Flask(__name__)
 

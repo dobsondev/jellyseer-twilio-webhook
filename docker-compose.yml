@@ -9,6 +9,6 @@ services:
       TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
       TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER}
       ADMIN_PHONE_NUMBER: ${ADMIN_PHONE_NUMBER}
-      API_KEY: ${API_KEY}
+      AUTH_HEADER: ${AUTH_HEADER}
     volumes:
       - ./app:/app
