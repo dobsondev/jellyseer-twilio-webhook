@@ -3,6 +3,9 @@ import os, json, logging, traceback
 from flask import Flask, request, jsonify 
 from twilio.rest import Client
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 account_sid = os.getenv("TWILIO_ACCOUNT_SID")
 auth_token = os.getenv("TWILIO_AUTH_TOKEN")
 twilio_client = Client(account_sid, auth_token)
@@ -10,18 +13,17 @@ twilio_client = Client(account_sid, auth_token)
 twilio_phone_number = os.getenv("TWILIO_PHONE_NUMBER")
 admin_phone_number = os.getenv("ADMIN_PHONE_NUMBER")
 
-api_key = os.getenv("AUTH_HEADER") 
+auth_header_key = os.getenv("AUTH_HEADER")
+
+logger.info(f"Authorization Header Key: {auth_header_key}\n")
 
 app = Flask(__name__)
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 def check_authorization_header(headers):
     headers = request.headers
-    auth = headers.get("Authorization")
+    auth_header = headers.get("Authorization")
     
-    if auth == api_key:
+    if auth_header == auth_header_key:
         return True
     else:
         return False

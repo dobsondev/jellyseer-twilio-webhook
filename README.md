@@ -12,17 +12,17 @@ Add the following to your `docker-compose.yml` file for your Jellystack setup:
 
 ```yaml
 jellyseer-twilio-webhook:
-    image: ghcr.io/dobsondev/jellyseer-twilio-webhook:latest
-    container_name: jellyseer-twilio-webhook
-    environment:
-      - TWILIO_ACCOUNT_SID=YOUR_TWILIO_ACCOUNT_SID
-      - TWILIO_AUTH_TOKEN=YOUR_TWILIO_AUTH_TOKEN
-      - TWILIO_PHONE_NUMBER=YOUR_TWILIO_PHONE_NUMBER
-      - ADMIN_PHONE_NUMBER=YOUR_ADMIN_PHONE_NUMBER
-      - API_KEY=YOUR_API_KEY
-    ports:
-      - "5050:5000"
-    restart: unless-stopped
+  image: ghcr.io/dobsondev/jellyseer-twilio-webhook:latest
+  container_name: jellyseer-twilio-webhook
+  environment:
+    - TWILIO_ACCOUNT_SID=YOUR_TWILIO_ACCOUNT_SID
+    - TWILIO_AUTH_TOKEN=YOUR_TWILIO_AUTH_TOKEN
+    - TWILIO_PHONE_NUMBER=YOUR_TWILIO_PHONE_NUMBER
+    - ADMIN_PHONE_NUMBER=YOUR_ADMIN_PHONE_NUMBER
+    - AUTH_HEADER=YOUR_AUTH_HEADER_KEY
+  ports:
+    - "5050:5000"
+  restart: unless-stopped
 ```
 
 ## Local Development Quick Start
