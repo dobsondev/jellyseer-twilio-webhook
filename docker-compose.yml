@@ -10,5 +10,6 @@ services:
       TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER}
       ADMIN_PHONE_NUMBER: ${ADMIN_PHONE_NUMBER}
       AUTH_HEADER: ${AUTH_HEADER}
+      JELLYSEER_URL: ${JELLYSEER_URL}
     volumes:
       - ./app:/app

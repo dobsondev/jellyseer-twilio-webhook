@@ -13,6 +13,8 @@ twilio_client = Client(account_sid, auth_token)
 twilio_phone_number = os.getenv("TWILIO_PHONE_NUMBER")
 admin_phone_number = os.getenv("ADMIN_PHONE_NUMBER")
 
+jellyseer_url = os.getenv("JELLYSEER_URL")
+
 auth_header_key = os.getenv("AUTH_HEADER")
 
 logger.info(f"Authorization Header Key: {auth_header_key}\n")
@@ -59,6 +61,35 @@ def txt_message_notification():
             subject = data.get("subject")
             requested_by = data.get("request").get("requestedBy_username")
             message_to_send = f"{event} - {subject}. Requested by {requested_by}."
+
+            media = data.get("media") or {}
+            media_type = media.get("media_type")
+            tmdb_id = media.get("tmdbId")
+
+            if jellyseer_url and media_type and tmdb_id:
+                request_url = f"{jellyseer_url.rstrip('/')}/{media_type}/{tmdb_id}"
+                message_to_send += f" {request_url}"
+
+            twilio_message = twilio_client.messages.create(
+                body=message_to_send,
+                from_=twilio_phone_number,
+                to=admin_phone_number
+            )
+
+            return jsonify({
+                "status": "Ok",
+                "message": "Twilio message sent successfully.",
+                "twilio": {
+                    "message": message_to_send,
+                    "sid": twilio_message.sid
+                }
+            }), 200
+
+        if notification_type == "MEDIA_AUTO_APPROVED":
+            event = data.get("event")
+            subject = data.get("subject")
+            requested_by = data.get("request").get("requestedBy_username")
+            message_to_send = f"{event} - {subject}. Requested by {requested_by}. Automatically approved."
 
             twilio_message = twilio_client.messages.create(
                 body=message_to_send,

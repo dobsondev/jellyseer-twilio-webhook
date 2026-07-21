@@ -166,6 +166,90 @@
 			"response": []
 		},
 		{
+			"name": "Webhook (Media Pending)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"notification_type\":\"MEDIA_PENDING\",\n   \"event\":\"New Movie Request\",\n   \"subject\":\"Some Movie Title\",\n   \"message\":\"\",\n   \"image\":\"\",\n   \"media\":{\n      \"media_type\":\"movie\",\n      \"tmdbId\":\"12345\",\n      \"tvdbId\":\"\",\n      \"status\":\"pending\",\n      \"status4k\":\"unknown\"\n   },\n   \"request\":{\n      \"request_id\":\"1\",\n      \"requestedBy_email\":\"user@example.com\",\n      \"requestedBy_username\":\"someuser\",\n      \"requestedBy_avatar\":\"\"\n   },\n   \"issue\":\"None\",\n   \"comment\":\"None\",\n   \"extra\":[\n      \n   ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/webhook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webhook (Media Auto Approved)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"notification_type\":\"MEDIA_AUTO_APPROVED\",\n   \"event\":\"New Movie Request\",\n   \"subject\":\"Some Movie Title\",\n   \"message\":\"\",\n   \"image\":\"\",\n   \"media\":{\n      \"media_type\":\"movie\",\n      \"tmdbId\":\"12345\",\n      \"tvdbId\":\"\",\n      \"status\":\"approved\",\n      \"status4k\":\"unknown\"\n   },\n   \"request\":{\n      \"request_id\":\"1\",\n      \"requestedBy_email\":\"user@example.com\",\n      \"requestedBy_username\":\"someuser\",\n      \"requestedBy_avatar\":\"\"\n   },\n   \"issue\":\"None\",\n   \"comment\":\"None\",\n   \"extra\":[\n      \n   ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/webhook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Webhook (No API Key)",
 			"event": [
 				{
@@ -273,7 +357,7 @@
 		"apikey": [
 			{
 				"key": "value",
-				"value": "ABCDEFG",
+				"value": "{{auth_header}}",
 				"type": "string"
 			},
 			{
